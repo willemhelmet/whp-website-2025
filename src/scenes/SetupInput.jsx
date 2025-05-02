@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Vector3 } from "three";
 import { useXR, TeleportTarget, useXRInputSourceState } from "@react-three/xr";
-import { Grid, Plane, Environment, Text, Sky } from "@react-three/drei";
+import { Grid, Environment, Text, Sky, Plane } from "@react-three/drei";
 import Player from "../components/3d/player";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import { useFrame } from "@react-three/fiber";
@@ -70,8 +70,8 @@ function SetupInput() {
     { label: "Y Button:", value: leftInputs.yButton ? "Pressed" : "Released" },
     { label: "Trigger:", value: leftInputs.trigger },
     { label: "Grip:", value: leftInputs.grip },
-    { label: "Joystick X:", value: leftInputs.joystickX },
-    { label: "Joystick Y:", value: leftInputs.joystickY },
+    { label: "Joystick X:", value: leftInputs.joystickX.toFixed(3) },
+    { label: "Joystick Y:", value: leftInputs.joystickY.toFixed(3) },
     {
       label: "Joystick Click:",
       value: leftInputs.joystickClick ? "Pressed" : "Released",
@@ -83,8 +83,8 @@ function SetupInput() {
     { label: "B Button:", value: rightInputs.bButton ? "Pressed" : "Released" },
     { label: "Trigger:", value: rightInputs.trigger },
     { label: "Grip:", value: rightInputs.grip },
-    { label: "Joystick X:", value: rightInputs.joystickX },
-    { label: "Joystick Y:", value: rightInputs.joystickY },
+    { label: "Joystick X:", value: rightInputs.joystickX.toFixed(3) },
+    { label: "Joystick Y:", value: rightInputs.joystickY.toFixed(3) },
     {
       label: "Joystick Click:",
       value: rightInputs.joystickClick ? "Pressed" : "Released",
@@ -115,6 +115,13 @@ function SetupInput() {
 
       {/* Left Controller Inputs */}
       <group position={[-2, 2, -3]}>
+        <Plane
+          scale={[2.5, 2.5, 1]}
+          position={[1, -1, -0.01]}
+          rotation={[0, 0, 0]}
+        >
+          <meshBasicMaterial color="#000000" opacity={0.7} transparent />
+        </Plane>
         {leftInputLabels.map((input, index) => (
           <Text
             key={`left-${index}`}
@@ -131,6 +138,13 @@ function SetupInput() {
 
       {/* Right Controller Inputs */}
       <group position={[2, 2, -3]}>
+        <Plane
+          scale={[2.5, 2.5, 1]}
+          position={[1, -1, -0.1]}
+          rotation={[0, 0, 0]}
+        >
+          <meshBasicMaterial color="#000000" opacity={0.7} transparent />
+        </Plane>
         {rightInputLabels.map((input, index) => (
           <Text
             key={`right-${index}`}
