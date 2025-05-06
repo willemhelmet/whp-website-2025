@@ -3,16 +3,18 @@ import World from "./HelloReactThreeFiber";
 import TeleportEnvironment from "./TeleportEnvironment";
 import SetupInteractions from "./SetupInteractions";
 import SetupInput from "./SetupInput";
+import SetupPhysics from "./SetupPhysics";
 
 const scenes = {
   world: World,
   teleport: TeleportEnvironment,
   interactions: SetupInteractions,
   input: SetupInput,
+  physics: SetupPhysics,
 };
 
 function SceneManager() {
-  const [currentScene, setCurrentScene] = useState("input");
+  const [currentScene, setCurrentScene] = useState("physics");
   const Scene = scenes[currentScene];
 
   return (

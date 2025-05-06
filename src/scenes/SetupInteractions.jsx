@@ -16,6 +16,7 @@ import Player from "../components/3d/player";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Lighting from "../components/3d/Lighting";
 
 function SetupInteractions() {
   const [position, setPosition] = useState(new Vector3());
@@ -123,7 +124,7 @@ function SetupInteractions() {
   return (
     <>
       <OrbitControlsWrapper />
-      <Environment preset="city" environmentIntensity={0.1} />
+      {/* <Environment preset="city" environmentIntensity={0.1} /> */}
       <Grid
         position={[0, 0.01, 0]}
         infiniteGrid={true}
@@ -218,21 +219,7 @@ function SetupInteractions() {
           roughness={0.2}
         />
       </Torus>
-
-      {/* Basic lighting setup */}
-      <directionalLight
-        position={sunPosition}
-        intensity={1}
-        castShadow
-        shadow-mapSize={[2048, 2048]}
-        shadow-camera-left={-20}
-        shadow-camera-right={20}
-        shadow-camera-top={20}
-        shadow-camera-bottom={-20}
-        shadow-camera-near={0.1}
-        shadow-camera-far={100}
-      />
-      <ambientLight intensity={0.2} />
+      <Lighting />
     </>
   );
 }

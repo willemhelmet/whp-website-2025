@@ -1,9 +1,11 @@
 import React, { useRef } from "react";
 import { useXRControllerLocomotion } from "@react-three/xr";
 import { XROrigin } from "@react-three/xr";
+import { usePlayer } from "../../contexts/PlayerContext";
 
-function Player({ position }) {
+function Player() {
   const originRef = useRef();
+  const { position } = usePlayer();
 
   useXRControllerLocomotion(originRef, {
     translationOptions: {

@@ -2,9 +2,13 @@ import { Canvas } from "@react-three/fiber";
 import { Loader } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { XR, createXRStore } from "@react-three/xr";
+import OrbitControlsWrapper from "./components/utils/OrbitControlsWrapper";
+import { PlayerProvider } from "./contexts/PlayerContext";
 
 import SceneManager from "./scenes/SceneManager";
 import XRButton from "./components/ui/XRButton";
+import Player from "./components/3d/player";
+import { Suspense } from "react";
 
 const store = createXRStore({
   hand: { teleportPointer: true },
@@ -13,7 +17,7 @@ const store = createXRStore({
 
 function App() {
   return (
-    <>
+    <PlayerProvider>
       <XRButton store={store} />
       <Canvas
         shadows
@@ -25,14 +29,18 @@ function App() {
           far: 1000,
         }}
       >
-        <XR store={store}>
-          <Physics debug>
-            <SceneManager />
-          </Physics>
-        </XR>
+        <Suspense>
+          <XR store={store}>
+            <Physics debug>
+              <OrbitControlsWrapper />
+              <SceneManager />
+              <Player />
+            </Physics>
+          </XR>
+        </Suspense>
       </Canvas>
       <Loader />
-    </>
+    </PlayerProvider>
   );
 }
 

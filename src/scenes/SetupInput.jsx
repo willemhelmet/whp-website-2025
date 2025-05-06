@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Vector3 } from "three";
-import { useXR, TeleportTarget, useXRInputSourceState } from "@react-three/xr";
+import { TeleportTarget, useXRInputSourceState } from "@react-three/xr";
 import { Grid, Environment, Text, Sky, Plane } from "@react-three/drei";
 import Player from "../components/3d/player";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
