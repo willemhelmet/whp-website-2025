@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Loader } from "@react-three/drei";
+import { Loader, Stats } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { XR, createXRStore } from "@react-three/xr";
 import OrbitControlsWrapper from "./components/utils/OrbitControlsWrapper";
@@ -19,6 +19,7 @@ function App() {
   return (
     <PlayerProvider>
       <XRButton store={store} />
+      <Stats />
       <Canvas
         shadows
         className="webgl"
