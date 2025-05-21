@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useXRControllerLocomotion } from "@react-three/xr";
 import { XROrigin } from "@react-three/xr";
 import { usePlayer } from "../../contexts/PlayerContext";

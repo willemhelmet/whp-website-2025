@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import World from "./HelloReactThreeFiber";
 import TeleportEnvironment from "./TeleportEnvironment";
 import SetupInteractions from "./SetupInteractions";
 import SetupInput from "./SetupInput";
 import SetupPhysics from "./SetupPhysics";
+import CreativeCodingTree from "./CreativeCodingTree";
 
 const scenes = {
   world: World,
@@ -11,10 +12,11 @@ const scenes = {
   interactions: SetupInteractions,
   input: SetupInput,
   physics: SetupPhysics,
+  tree: CreativeCodingTree,
 };
 
 function SceneManager() {
-  const [currentScene, setCurrentScene] = useState("physics");
+  const [currentScene, setCurrentScene] = useState("tree");
   const Scene = scenes[currentScene];
 
   return (

@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid, Box, Sphere, Plane, Sky, Environment } from "@react-three/drei";
 import Player from "./player";
 import { TeleportTarget } from "@react-three/xr";

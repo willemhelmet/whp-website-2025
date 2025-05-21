@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState } from "react";
 import { Vector3 } from "three";
 import { TeleportTarget, useXRInputSourceState } from "@react-three/xr";
 import { Grid, Environment, Text, Sky, Plane } from "@react-three/drei";
