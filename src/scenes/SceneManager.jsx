@@ -5,6 +5,9 @@ import SetupInteractions from "./SetupInteractions";
 import SetupInput from "./SetupInput";
 import SetupPhysics from "./SetupPhysics";
 import CreativeCodingTree from "./CreativeCodingTree";
+import MyFirstShader from "./MyFirstShader.tsx";
+import MyFirstParticleSystem from "./MyFirstParticleSystem.jsx";
+import MyFirstPostProcessing from "./MyFirstPostProcessing.jsx";
 
 const scenes = {
   world: World,
@@ -13,10 +16,13 @@ const scenes = {
   input: SetupInput,
   physics: SetupPhysics,
   tree: CreativeCodingTree,
+  firstShader: MyFirstShader,
+  firstParticles: MyFirstParticleSystem,
+  firstPostProcessing: MyFirstPostProcessing,
 };
 
 function SceneManager() {
-  const [currentScene, setCurrentScene] = useState("tree");
+  const [currentScene, setCurrentScene] = useState("firstPostProcessing");
   const Scene = scenes[currentScene];
 
   return (
