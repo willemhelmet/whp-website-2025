@@ -2,20 +2,12 @@ import DefaultWorld from "../components/3d/DefaultWorld.jsx";
 import { useRef, useMemo } from "react";
 import { useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
-import { Text, Plane, shaderMaterial, Sphere } from "@react-three/drei";
-import {
-  DebugLayerMaterial,
-  LayerMaterial,
-  Depth,
-  Fresnel,
-  Color,
-} from "lamina";
-import { Abstract } from "lamina/vanilla";
+import { Text, shaderMaterial, useFBO } from "@react-three/drei";
 
 function ParticlesOnSphere() {
   return (
     <>
-      <group position={[6, 2, 0]}>
+      <group position={[8, 2, 0]}>
         <Text fontSize={0.125} maxWidth={1.5} textAlign="center">
           Particles on Sphere
         </Text>
@@ -60,7 +52,7 @@ function ParticlesOnCustomGeometry({ count, shape }) {
 
   return (
     <>
-      <group position={[4, 2, 0]}>
+      <group position={[6, 2, 0]}>
         <Text fontSize={0.125} maxWidth={1.5} textAlign="center">
           Random Particles with Custom Geometry
         </Text>
@@ -130,7 +122,7 @@ function AnimateParticlesUsingAttributes({ size }) {
 
   return (
     <>
-      <group position={[2, 2, 0]}>
+      <group position={[4, 2, 0]}>
         <Text fontSize={0.125} maxWidth={1.5} textAlign="center">
           Random Particles with Custom Shader
         </Text>
@@ -194,6 +186,14 @@ const SolarSystemShader = shaderMaterial(
 );
 extend({ SolarSystemShader });
 
+function FBOExample() {
+  return (
+    <>
+      <group></group>
+    </>
+  );
+}
+
 function TinySolarSystem({ count, radius, size }) {
   const points = useRef();
 
@@ -219,10 +219,10 @@ function TinySolarSystem({ count, radius, size }) {
 
   return (
     <>
-      <group position={[0, 2, 0]}>
-        {/*<Text fontSize={0.125} maxWidth={1.5} textAlign="center">
+      <group position={[2, 2, 0]}>
+        <Text fontSize={0.125} maxWidth={1.5} textAlign="center">
           Tiny Galaxy
-        </Text>*/}
+        </Text>
         <points ref={points}>
           <bufferGeometry attach="geometry">
             <bufferAttribute

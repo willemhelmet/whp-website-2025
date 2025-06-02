@@ -4,7 +4,7 @@ import { IfInSessionMode } from "@react-three/xr";
 function OrbitControlsWrapper() {
   return (
     <IfInSessionMode deny={["immersive-ar", "immersive-vr"]}>
-      <OrbitControls />
+      <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2.1} />
     </IfInSessionMode>
   );
 }
