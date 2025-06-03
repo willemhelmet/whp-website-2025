@@ -13,7 +13,7 @@
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^9.121.3",
     "@react-three/fiber": "^8.17.12",
-    "@react-three/uikit": "^0.8.6",
+    "@react-three/uikit": "^0.8.19",
     "@react-three/xr": "^6.5.3",
     "@types/three": "^0.172.0",
     "ecctrl": "^1.0.92",
