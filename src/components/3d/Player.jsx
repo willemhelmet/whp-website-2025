@@ -3,7 +3,6 @@ import { useXRControllerLocomotion } from "@react-three/xr";
 import { XROrigin } from "@react-three/xr";
 import { usePlayer } from "../../contexts/PlayerContext";
 import Ecctrl from "ecctrl";
-import { PointerLockControls } from "@react-three/drei";
 
 function Player() {
   const originRef = useRef();

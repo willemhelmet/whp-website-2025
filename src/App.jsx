@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import { Loader, Stats, KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { XR, createXRStore } from "@react-three/xr";
-import OrbitControlsWrapper from "./components/utils/OrbitControlsWrapper";
 import { PlayerProvider } from "./contexts/PlayerContext";
 
 import SceneManager from "./scenes/SceneManager";
