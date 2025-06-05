@@ -5,6 +5,7 @@ import { Grid, Environment, Text, Sky, Plane } from "@react-three/drei";
 import Player from "../components/3d/player";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import { useFrame } from "@react-three/fiber";
+import DefaultWorld from "../components/3d/DefaultWorld.jsx";
 
 function SetupInput() {
   const [position, setPosition] = useState(new Vector3());
@@ -93,18 +94,10 @@ function SetupInput() {
 
   return (
     <>
-      <OrbitControlsWrapper />
-      <Environment preset="city" environmentIntensity={0.1} />
-      <Grid
-        position={[0, 0.01, 0]}
-        infiniteGrid={true}
-        cellColor={"#808080"}
-        sectionColor={"#808080"}
-      />
+      <DefaultWorld />
       <Plane scale={[100, 100, 1]} rotation={[-Math.PI * 0.5, 0, 0]}>
         <meshBasicMaterial color={"#404040"} />
       </Plane>
-      <Player position={position} />
       <Sky sunPosition={sunPosition} />
       <TeleportTarget onTeleport={setPosition}>
         <mesh scale={[100, 1, 100]} position={[0, -0.5, 0]}>

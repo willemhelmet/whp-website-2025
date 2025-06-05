@@ -12,6 +12,7 @@ import { CuboidCollider } from "@react-three/rapier";
 import { MathUtils, Color } from "three";
 import { LayerMaterial, Gradient } from "lamina";
 import { useFrame } from "@react-three/fiber";
+import Portal from "../components/3d/Portal.jsx";
 
 function Orb({ position, radius }) {
   return (
@@ -159,6 +160,7 @@ export default function CreativeCodingReflection(props) {
         exposure={0.16}
       />
       <Stars />
+      <Portal position={[0, 0, -2]} targetScene={"hub"} label={"back to hub"} />
     </>
   );
 }

@@ -1,9 +1,8 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Vector3 } from "three";
 import { TeleportTarget } from "@react-three/xr";
 import {
   Grid,
-  Environment,
   Plane,
   Box,
   Sphere,
@@ -17,6 +16,7 @@ import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Lighting from "../components/3d/Lighting";
+import DefaultWorld from "../components/3d/DefaultWorld";
 
 function SetupInteractions() {
   const [position, setPosition] = useState(new Vector3());
@@ -123,14 +123,6 @@ function SetupInteractions() {
 
   return (
     <>
-      <OrbitControlsWrapper />
-      {/* <Environment preset="city" environmentIntensity={0.1} /> */}
-      <Grid
-        position={[0, 0.01, 0]}
-        infiniteGrid={true}
-        cellColor={"#808080"}
-        sectionColor={"#808080"}
-      />
       <Plane
         position={[0, 0, 0]}
         rotation={[-Math.PI * 0.5, 0, 0]}
@@ -138,14 +130,7 @@ function SetupInteractions() {
       >
         <meshBasicMaterial color={"#404040"} />
       </Plane>
-      <Player position={position} />
       <Sky sunPosition={sunPosition} />
-      <TeleportTarget onTeleport={setPosition}>
-        <mesh scale={[100, 1, 100]} position={[0, -0.5, 0]}>
-          <boxGeometry />
-          <meshBasicMaterial color="green" opacity={0.0} transparent />
-        </mesh>
-      </TeleportTarget>
 
       {/* Random 3D Objects */}
       <Box
@@ -220,6 +205,7 @@ function SetupInteractions() {
         />
       </Torus>
       <Lighting />
+      <DefaultWorld />
     </>
   );
 }

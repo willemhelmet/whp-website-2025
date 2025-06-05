@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { Vector3 } from "three";
 
 const PlayerContext = createContext();

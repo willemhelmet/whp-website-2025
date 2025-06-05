@@ -1,9 +1,8 @@
-import { Grid, Environment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import { TeleportTarget } from "@react-three/xr";
 import { useState } from "react";
 import { Vector3 } from "three";
-import Player from "../components/3d/player";
-import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
+import DefaultWorld from "../components/3d/DefaultWorld.jsx";
 
 function TeleportEnvironment() {
   const [position, setPosition] = useState(new Vector3());
@@ -19,10 +18,9 @@ function TeleportEnvironment() {
 
   return (
     <>
-      <OrbitControlsWrapper />
       <Environment preset="studio" />
-      <Grid infiniteGrid={true} sectionColor={"#0f0f0f"} />
-      <Player position={position} />
+
+      <DefaultWorld />
 
       {/* Teleport platforms */}
       {platforms.map((platform, index) => (
@@ -40,7 +38,7 @@ function TeleportEnvironment() {
       ))}
 
       {/* Lighting */}
-      <directionalLight
+      {/* <directionalLight
         position={[10, 10, 10]}
         intensity={1}
         castShadow
@@ -52,7 +50,7 @@ function TeleportEnvironment() {
         shadow-camera-near={0.1}
         shadow-camera-far={100}
       />
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={0.2} /> */}
     </>
   );
 }

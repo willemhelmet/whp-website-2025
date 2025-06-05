@@ -4,6 +4,7 @@ import { Instances, Instance } from "@react-three/drei";
 import { LayerMaterial, Gradient } from "lamina";
 import { CuboidCollider } from "@react-three/rapier";
 import { useControls } from "leva";
+import Portal from "../components/3d/Portal.jsx";
 
 const randomVector = (r) => [
   r / 2 - Math.random() * r,
@@ -52,6 +53,7 @@ export default function GradientMountainScene() {
 
   return (
     <>
+      <Portal position={[0, 0, -2]} targetScene={"hub"} label={"back to hub"} />
       <color attach="background" args={[colorB]} />
       <fogExp2 attach="fog" color={colorB} density={0.1} />
       <CuboidCollider position={[0, -0.5, 0]} args={[50, 0.5, 50]} />

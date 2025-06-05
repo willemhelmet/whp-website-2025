@@ -42,7 +42,6 @@ function App() {
           <Suspense>
             <XR store={store}>
               <Physics>
-                {/* <OrbitControlsWrapper /> */}
                 <SceneManager />
                 <KeyboardControls map={keyboardControlsMap}>
                   <Player />

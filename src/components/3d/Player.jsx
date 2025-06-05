@@ -1,12 +1,26 @@
-import { useRef } from "react";
-import { useXRControllerLocomotion } from "@react-three/xr";
-import { XROrigin } from "@react-three/xr";
+import { useRef, useEffect, useState } from "react";
+import { XROrigin, useXRControllerLocomotion, useXR } from "@react-three/xr";
 import { usePlayer } from "../../contexts/PlayerContext";
 import Ecctrl from "ecctrl";
+// import { useFrame } from "@react-three/fiber";
 
 function Player() {
-  const originRef = useRef();
   const { position } = usePlayer();
+
+  const session = useXR((state) => state.session);
+  const mode = useXR((state) => state.mode);
+  const originRef = useRef();
+
+  const isInXR =
+    !!session || mode === "immersive-ar" || mode === "immersive-vr";
+
+  const xrCamera = useXR((state) => state.camera);
+
+  useEffect(() => {
+    console.log("Is in XR:", isInXR);
+    console.log("Current XR session:", session);
+    console.log("Current XR mode:", mode);
+  }, [isInXR, session, mode]);
 
   useXRControllerLocomotion(originRef, {
     translationOptions: {
@@ -22,21 +36,23 @@ function Player() {
 
   return (
     <>
-      <Ecctrl
-        position={[0, 0, 0]}
-        rotation={[0, Math.PI, 0]}
-        camCollision={false} // disable camera collision detect (useless in FP mode)
-        camInitDis={-0.01} // camera intial position
-        camMinDis={-0.01} // camera zoom in closest position
-        camFollowMult={1000} // give a big number here, so the camera follows the target (character) instantly
-        camLerpMult={1000} // give a big number here, so the camera lerp to the followCam position instantly
-        turnVelMultiplier={1} // Turning speed same as moving speed
-        turnSpeed={100} // give it big turning speed to prevent turning wait time
-        mode="CameraBasedMovement" // character's rotation will follow camera's rotation in this mode
-        camZoomSpeed={0}
-      />
-      <XROrigin ref={originRef} position={position} />;
-      {/* <PointerLockControls /> */}
+      {isInXR ? (
+        <XROrigin ref={originRef} position={position} />
+      ) : (
+        <Ecctrl
+          position={[0, 0, 0]} // Consider if this should also use 'position' from usePlayer
+          rotation={[0, Math.PI, 0]}
+          camCollision={false}
+          camInitDis={-0.01}
+          camMinDis={-0.01}
+          camFollowMult={1000}
+          camLerpMult={1000}
+          turnVelMultiplier={1}
+          turnSpeed={100}
+          mode="CameraBasedMovement"
+          camZoomSpeed={0}
+        />
+      )}
     </>
   );
 }

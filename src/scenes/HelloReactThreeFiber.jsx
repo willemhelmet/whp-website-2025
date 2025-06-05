@@ -1,16 +1,12 @@
-import React from "react";
 import { Grid, Box, Sphere, Plane, Sky, Environment } from "@react-three/drei";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import Player from "../components/3d/player";
+import DefaultWorld from "../components/3d/DefaultWorld.jsx";
 
 function HelloReactThreeFiber() {
   return (
     <>
-      <OrbitControlsWrapper />
-      <Environment preset="studio" />
-      <Player />
-
-      <Grid infiniteGrid={true} sectionColor={"#0f0f0f"} />
+      <DefaultWorld />
       <Plane
         position={[0, -0.001, 0]}
         rotation={[-Math.PI * 0.5, 0, 0]}
