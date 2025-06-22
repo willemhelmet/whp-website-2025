@@ -55,6 +55,10 @@ export default function HubScene() {
       scene: "volumetricSpotLightArticleScene",
       label: "volumetric spot light",
     },
+    {
+      scene: "melencoliaHub",
+      label: "durer's solid",
+    },
   ];
   return (
     <>

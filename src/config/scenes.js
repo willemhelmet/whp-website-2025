@@ -13,6 +13,7 @@ import SetupPortals from "../scenes/SetupPortals";
 import HubScene from "../scenes/HubScene";
 //import JNLScene from "../scenes/JNLScene";
 import VolumetricSpotLightArticleScene from "../scenes/VolumetricSpotLightArticleScene";
+import MelencoliaHub from "../scenes/Melencolia-Hub";
 
 // Centralized scene definitions with metadata
 export const sceneDefinitions = {
@@ -44,6 +45,10 @@ export const sceneDefinitions = {
   volumetricSpotLightArticleScene: {
     component: VolumetricSpotLightArticleScene,
     label: "volumetric spot light",
+  },
+  melencoliaHub: {
+    component: MelencoliaHub,
+    label: "melencolia hub",
   },
   // TODO: Properly import original JNL scene
   //jnl: { component: JNLScene, label: "jnl scene" },
