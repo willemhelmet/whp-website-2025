@@ -17,9 +17,9 @@ function Player() {
   const xrCamera = useXR((state) => state.camera);
 
   useEffect(() => {
-    console.log("Is in XR:", isInXR);
-    console.log("Current XR session:", session);
-    console.log("Current XR mode:", mode);
+    // console.log("Is in XR:", isInXR);
+    // console.log("Current XR session:", session);
+    // console.log("Current XR mode:", mode);
   }, [isInXR, session, mode]);
 
   useXRControllerLocomotion(originRef, {

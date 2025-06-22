@@ -51,6 +51,10 @@ export default function HubScene() {
       scene: "world",
       label: "world",
     },
+    {
+      scene: "volumetricSpotLightArticleScene",
+      label: "volumetric spot light",
+    },
   ];
   return (
     <>
