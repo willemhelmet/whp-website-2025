@@ -8,6 +8,7 @@ export default function DefaultWorld({
   lighting = true,
   sky = true,
   grid = true,
+  portal = true,
 }) {
   const sunPosition = new Vector3(10, 10, 10);
   return (
@@ -26,7 +27,13 @@ export default function DefaultWorld({
           </Plane>
         </group>
       )}
-      <Portal position={[0, 0, -2]} targetScene={"hub"} label={"back to hub"} />
+      {portal && (
+        <Portal
+          position={[0, 0, -2]}
+          targetScene={"hub"}
+          label={"back to hub"}
+        />
+      )}
       <FlatTeleportSurface />
       <CuboidCollider position={[0, -0.5, 0]} args={[50, 0.5, 50]} />
       {sky && <Sky sunPosition={sunPosition} />}

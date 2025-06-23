@@ -3,6 +3,7 @@ import { extend, useFrame } from "@react-three/fiber";
 import { useSceneManager } from "../../contexts/SceneContext.jsx";
 import { Text, Cylinder, shaderMaterial } from "@react-three/drei";
 import { useRef } from "react";
+import PropTypes from "prop-types";
 
 const PortalShader = shaderMaterial(
   { u_time: 0 },
@@ -28,11 +29,12 @@ const PortalShader = shaderMaterial(
       vec3 color = vec3(0.2, 0.5, 0.8);
       gl_FragColor = vec4(color, alpha);
     }
-  `),
+  `)
 );
 extend({ PortalShader });
 
-export default function Portal({ position, rotation, targetScene, label }) {
+export default function Portal(props) {
+  const { targetScene, label, ...rest } = props;
   const { setCurrentScene } = useSceneManager();
   const portalRef = useRef();
   const textRef = useRef();
@@ -59,7 +61,7 @@ export default function Portal({ position, rotation, targetScene, label }) {
   };
 
   return (
-    <group position={position} rotation={rotation}>
+    <group {...rest}>
       {label && (
         <Text
           ref={textRef}
@@ -91,3 +93,8 @@ export default function Portal({ position, rotation, targetScene, label }) {
     </group>
   );
 }
+
+Portal.propTypes = {
+  targetScene: PropTypes.string,
+  label: PropTypes.string,
+};
