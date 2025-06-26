@@ -1,4 +1,4 @@
-import { Sky, Stars } from "@react-three/drei";
+import { Sky, Stars, Float } from "@react-three/drei";
 
 import Alien from "../components/3d/Alien.jsx";
 import AndyAward from "../components/3d/AndyAward.jsx";
@@ -9,12 +9,18 @@ import Poster from "../components/portfolio-items/Poster.jsx";
 import { text } from "../config/text.js";
 import TriangleMan from "../components/3d/TriangleMan.jsx";
 import Apartment from "../components/3d/Apartment_Maquette.jsx";
-import Lighting from "../components/3d/Lighting.jsx";
+import { RCLogo } from "../components/3d/RC_Logo.jsx";
+// import Lighting from "../components/3d/Lighting.jsx";
 
 export default function JNLScene() {
   return (
     <group rotation={[0, Math.PI, 0]}>
-      <Lighting />
+      <Float position={[-5.95, 2.48, -9]} rotation={[0, Math.PI, 0]}>
+        <RCLogo />
+      </Float>
+      {/* <Lighting /> */}
+      <ambientLight />
+      <directionalLight castShadow position={[10, 10, 10]} />
       <Alien
         position={[-0.84, -0.354, -2.85]}
         rotation={[0, -1.965, 0]}
