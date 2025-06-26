@@ -20,6 +20,57 @@ export default function MelencoliaHub() {
     return [x, 0, z];
   });
 
+  const scenes = [
+    {
+      label: "setup interactions",
+      scene: "interactions",
+    },
+    {
+      label: "setup input",
+      scene: "input",
+    },
+    {
+      label: "setup physics",
+      scene: "physics",
+    },
+    {
+      label: "my first shader",
+      scene: "firstShader",
+    },
+    {
+      label: "learn particle systems",
+      scene: "firstParticles",
+    },
+    {
+      label: "gradient mountain scene",
+      scene: "gradientMountain",
+    },
+    {
+      label: "creative coding reflection",
+      scene: "creativeCodingReflection",
+    },
+    {
+      label: "volumetric spot light",
+      scene: "volumetricSpotLightArticleScene",
+    },
+    {
+      scene: "jnl",
+      label: "jnl",
+    },
+    {
+      scene: null,
+      label: "no scene",
+    },
+    {
+      scene: null,
+      label: "no scene",
+    },
+    {
+      scene: null,
+      label: "no scene",
+    },
+  ];
+
   return (
     <>
       <group>
@@ -66,14 +117,53 @@ export default function MelencoliaHub() {
       >
         <DurersSolid />
       </Float>
-      <DefaultWorld portal={false} />
+      <DefaultWorld portal={false} lighting={false} />
+      {/* Add colored lights around the Durer's solid */}
+      {/* Red light (matches inner triangle) */}
+      <pointLight
+        position={[2, 2, 0]}
+        color="red"
+        intensity={1.2}
+        distance={8}
+      />
+      {/* Blue light (matches other inner triangle) */}
+      <pointLight
+        position={[-2, 2, 0]}
+        color="blue"
+        intensity={1.2}
+        distance={8}
+      />
+      {/* Green lights (matches connecting lines) */}
+      <pointLight
+        position={[0, 2, 2]}
+        color="green"
+        intensity={1.2}
+        distance={8}
+      />
+      <pointLight
+        position={[0, 2, -2]}
+        color="green"
+        intensity={1.2}
+        distance={8}
+      />
+      {/* Orange light (matches outer hexagon) */}
+      <pointLight
+        position={[0, 4, 0]}
+        color="orange"
+        intensity={1.5}
+        distance={10}
+      />
+      {/* Subtle ambient light for overall illumination */}
+      <ambientLight intensity={0.25} />
+      {/* TODO: Make portals point to actual scenes */}
       {/* Inner hexagon */}
       {innerPortalPositions.map((pos, i) => (
         <Portal
           key={`inner-${i}`}
           position={pos}
-          targetScene={`SceneInner${i + 1}`}
-          label={`Portal ${i + 1}`}
+          targetScene={scenes[i].scene}
+          // targetScene={`SceneInner${i + 1}`}
+          label={scenes[i].label}
         />
       ))}
       {/* Outer hexagon */}
@@ -81,8 +171,9 @@ export default function MelencoliaHub() {
         <Portal
           key={`outer-${i}`}
           position={pos}
-          targetScene={`SceneOuter${i + 1}`}
-          label={`Portal ${i + 7}`}
+          targetScene={scenes[i + 6].scene}
+          // targetScene={`SceneOuter${i + 1}`}
+          label={scenes[i + 6].label}
         />
       ))}
     </>

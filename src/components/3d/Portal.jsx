@@ -6,7 +6,9 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 
 const PortalShader = shaderMaterial(
-  { u_time: 0 },
+  {
+    /*u_time: 0*/
+  },
   resolveLygia(`
     varying vec2 v_uv;
     void main() {
@@ -42,10 +44,9 @@ export default function Portal(props) {
   useFrame((state) => {
     const { clock } = state;
     const elapsedTime = clock.getElapsedTime();
-    if (portalRef.current) {
-      portalRef.current.material.uniforms.u_time.value = elapsedTime;
-    }
-    // console.log(state.camera.position);
+    // if (portalRef.current) {
+    //   portalRef.current.material.uniforms.u_time.value = elapsedTime;
+    // }
     if (textRef.current) {
       textRef.current.quaternion.copy(state.camera.quaternion);
     }

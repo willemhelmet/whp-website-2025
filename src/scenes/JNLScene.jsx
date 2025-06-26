@@ -1,21 +1,20 @@
-import { Box, Sky, Stars } from "@react-three/drei";
-import { useControls } from "leva";
+import { Sky, Stars } from "@react-three/drei";
 
 import Alien from "../components/3d/Alien.jsx";
 import AndyAward from "../components/3d/AndyAward.jsx";
-import JNL from "../components/3d/JNL.jsx";
-//import PhysicsBall from "./PhysicsBall.jsx";
-import PortfolioImage from "../portfolio-items/PortfolioImage.jsx";
-import PortfolioVideo from "../portfolio-items/PortfolioVideo.jsx";
-import Poster from "../portfolio-items/Poster.jsx";
-import { text } from "../../data/text.js";
-import Suzanne from "../components/3d/Suzanne";
+import JNL from "../components/3d/jnl/JNL.jsx";
+import PortfolioImage from "../components/portfolio-items/PortfolioImage.jsx";
+import PortfolioVideo from "../components/portfolio-items/PortfolioVideo.jsx";
+import Poster from "../components/portfolio-items/Poster.jsx";
+import { text } from "../config/text.js";
 import TriangleMan from "../components/3d/TriangleMan.jsx";
-import Apartment from "../3d-objects/Apartment_Maquette.jsx";
+import Apartment from "../components/3d/Apartment_Maquette.jsx";
+import Lighting from "../components/3d/Lighting.jsx";
 
 export default function JNLScene() {
   return (
     <group rotation={[0, Math.PI, 0]}>
+      <Lighting />
       <Alien
         position={[-0.84, -0.354, -2.85]}
         rotation={[0, -1.965, 0]}
@@ -32,12 +31,6 @@ export default function JNLScene() {
         title={text[9].title}
         body={text[9].body}
       />
-      {/*
-      <axesHelper
-        position={[position.x, position.y, position.z]}
-        rotation={[rotation.x, rotation.y, rotation.z]}
-        scale={[2, 2, 2]}
-      /> */}
       <JNL />
       <TriangleMan
         position={[6.26, -0.7, -0.39]}
@@ -58,16 +51,6 @@ export default function JNLScene() {
         azimuth={0.25}
       />
       <Stars />
-      <Suzanne
-        position={[-6.13, 2.53, -9]}
-        rotation={[0, Math.PI * 0.9, 0]}
-        scale={[0.5, 0.5, 0.5]}
-      />
-      {/*<Smiley
-        position={[-1.75, 0.75, -7.6]}
-        rotation={[0, -Math.PI * 0.35, 0]}
-        scale={[0.25, 0.25, 0.25]}
-      />*/}
       {/* Hackathons */}
       <PortfolioImage
         position={[1, 0.75, -13.37]}

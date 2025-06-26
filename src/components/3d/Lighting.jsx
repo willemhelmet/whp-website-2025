@@ -1,4 +1,3 @@
-import React from "react";
 import { Sky } from "@react-three/drei";
 import { Vector3 } from "three";
 

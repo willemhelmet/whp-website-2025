@@ -11,7 +11,7 @@ import GradientMountainScene from "../scenes/GradientMountainScene";
 import CreativeCodingReflection from "../scenes/CreativeCodingReflection";
 import SetupPortals from "../scenes/SetupPortals";
 import HubScene from "../scenes/HubScene";
-//import JNLScene from "../scenes/JNLScene";
+import JNLScene from "../scenes/JNLScene";
 import VolumetricSpotLightArticleScene from "../scenes/VolumetricSpotLightArticleScene";
 import MelencoliaHub from "../scenes/Melencolia-Hub";
 
@@ -51,5 +51,5 @@ export const sceneDefinitions = {
     label: "melencolia hub",
   },
   // TODO: Properly import original JNL scene
-  //jnl: { component: JNLScene, label: "jnl scene" },
+  jnl: { component: JNLScene, label: "jnl scene" },
 };

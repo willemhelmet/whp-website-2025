@@ -4,7 +4,6 @@ Command: npx gltfjsx@6.5.2 Andy_Award.glb --transform
 Files: Andy_Award.glb [8.86KB] > /Users/whp/Documents/HTML/WHP WEBSITE ROOT/ASSETS/AndyAward/Andy_Award-transformed.glb [3.44KB] (61%)
 */
 
-import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function AndyAward(props) {

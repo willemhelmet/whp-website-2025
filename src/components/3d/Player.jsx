@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { XROrigin, useXRControllerLocomotion, useXR } from "@react-three/xr";
 import { usePlayer } from "../../contexts/PlayerContext";
 import Ecctrl from "ecctrl";
+import { PointerLockControls } from "@react-three/drei";
 // import { useFrame } from "@react-three/fiber";
 
 function Player() {
