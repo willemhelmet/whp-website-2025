@@ -21,54 +21,18 @@ export default function MelencoliaHub() {
   });
 
   const scenes = [
-    {
-      label: "setup interactions",
-      scene: "interactions",
-    },
-    {
-      label: "setup input",
-      scene: "input",
-    },
-    {
-      label: "setup physics",
-      scene: "physics",
-    },
-    {
-      label: "my first shader",
-      scene: "firstShader",
-    },
-    {
-      label: "learn particle systems",
-      scene: "firstParticles",
-    },
-    {
-      label: "gradient mountain scene",
-      scene: "gradientMountain",
-    },
-    {
-      label: "creative coding reflection",
-      scene: "creativeCodingReflection",
-    },
-    {
-      label: "volumetric spot light",
-      scene: "volumetricSpotLightArticleScene",
-    },
-    {
-      scene: "jnl",
-      label: "jnl",
-    },
-    {
-      scene: null,
-      label: "no scene",
-    },
-    {
-      scene: null,
-      label: "no scene",
-    },
-    {
-      scene: null,
-      label: "no scene",
-    },
+    { scene: "melencoliaScene1", label: "melencolia scene 1" },
+    { scene: "melencoliaScene2", label: "melencolia scene 2" },
+    { scene: "melencoliaScene3", label: "melencolia scene 3" },
+    { scene: "melencoliaScene4", label: "melencolia scene 4" },
+    { scene: "melencoliaScene5", label: "melencolia scene 5" },
+    { scene: "melencoliaScene6", label: "melencolia scene 6" },
+    { scene: "melencoliaScene7", label: "melencolia scene 7" },
+    { scene: "melencoliaScene8", label: "melencolia scene 8" },
+    { scene: "melencoliaScene9", label: "melencolia scene 9" },
+    { scene: "melencoliaScene10", label: "melencolia scene 10" },
+    { scene: "melencoliaScene11", label: "melencolia scene 11" },
+    { scene: "melencoliaScene12", label: "melencolia scene 12" },
   ];
 
   return (

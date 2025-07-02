@@ -3,7 +3,7 @@ import { SceneProvider } from "../contexts/SceneContext.jsx";
 import { sceneDefinitions } from "../config/scenes";
 
 export default function SceneManager() {
-  const [currentScene, setCurrentScene] = useState("learnUIKit");
+  const [currentScene, setCurrentScene] = useState("melencoliaHub");
   // const Scene = scenes[currentScene];
   const SceneComponent = sceneDefinitions[currentScene]?.component;
 
