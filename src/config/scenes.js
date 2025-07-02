@@ -14,6 +14,7 @@ import HubScene from "../scenes/HubScene";
 import JNLScene from "../scenes/JNLScene";
 import VolumetricSpotLightArticleScene from "../scenes/VolumetricSpotLightArticleScene";
 import MelencoliaHub from "../scenes/Melencolia-Hub";
+import LearnUIKit from "../scenes/LearnUIKit";
 
 // Centralized scene definitions with metadata
 export const sceneDefinitions = {
@@ -50,6 +51,6 @@ export const sceneDefinitions = {
     component: MelencoliaHub,
     label: "melencolia hub",
   },
-  // TODO: Properly import original JNL scene
   jnl: { component: JNLScene, label: "jnl scene" },
+  learnUIKit: { component: LearnUIKit, label: "learn ui kit" },
 };
