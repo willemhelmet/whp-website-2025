@@ -1,8 +1,9 @@
 import { CuboidCollider } from "@react-three/rapier";
-import { extend, useFrame } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
 import { useSceneManager } from "../../contexts/SceneContext.jsx";
-import { Text, Cylinder, shaderMaterial } from "@react-three/drei";
+import { Cylinder, Billboard, shaderMaterial } from "@react-three/drei";
 import { useRef } from "react";
+import { Container, Root, Text } from "@react-three/uikit";
 import PropTypes from "prop-types";
 
 const PortalShader = shaderMaterial(
@@ -37,41 +38,40 @@ extend({ PortalShader });
 
 export default function Portal(props) {
   const { targetScene, label, ...rest } = props;
-  const { setCurrentScene } = useSceneManager();
+  const { isTeleporting, teleportTo, completeTeleport } = useSceneManager();
   const portalRef = useRef();
-  const textRef = useRef();
-
-  useFrame((state) => {
-    const { clock } = state;
-    const elapsedTime = clock.getElapsedTime();
-    // if (portalRef.current) {
-    //   portalRef.current.material.uniforms.u_time.value = elapsedTime;
-    // }
-    if (textRef.current) {
-      textRef.current.quaternion.copy(state.camera.quaternion);
-    }
-  });
 
   const onEnter = (e) => {
-    if (e.colliderObject.name == "character-capsule-collider") {
+    if (
+      e.colliderObject.name == "character-capsule-collider" &&
+      !isTeleporting
+    ) {
       console.log(`Portal entered! Switching to scene: ${targetScene}`);
       if (targetScene) {
-        setCurrentScene(targetScene);
+        teleportTo(targetScene);
       }
+    }
+  };
+
+  const onExit = (e) => {
+    if (e.colliderObject.name == "character-capsule-collider") {
+      console.log("Player exited portal, re-enabling teleportation.");
+      completeTeleport();
     }
   };
 
   return (
     <group {...rest}>
       {label && (
-        <Text
-          ref={textRef}
-          fontSize={0.125}
-          position={[0, 1, 0]}
-          rotation={[0, Math.PI, 0]}
-        >
-          {label}
-        </Text>
+        <Billboard position={[0, 1, 0]}>
+          <Root>
+            <Container backgroundColor={"#3380CC"} margin={1}>
+              <Text color={"white"} fontSize={10} margin={1}>
+                {label}
+              </Text>
+            </Container>
+          </Root>
+        </Billboard>
       )}
       {/* bottom */}
       <Cylinder position={[0, 0.025, 0]} args={[0.5, 0.5, 0.1]}>
@@ -90,6 +90,7 @@ export default function Portal(props) {
         position={[0, 1, 0]}
         args={[0.5, 1, 0.5]}
         onIntersectionEnter={onEnter}
+        onIntersectionExit={onExit}
       />
     </group>
   );
@@ -99,3 +100,4 @@ Portal.propTypes = {
   targetScene: PropTypes.string,
   label: PropTypes.string,
 };
+

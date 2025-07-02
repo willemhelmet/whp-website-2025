@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { SceneProvider } from "../contexts/SceneContext.jsx";
+import { SceneProvider, useSceneManager } from "../contexts/SceneContext.jsx";
 import { sceneDefinitions } from "../config/scenes";
 
-export default function SceneManager() {
-  const [currentScene, setCurrentScene] = useState("melencoliaHub");
-  // const Scene = scenes[currentScene];
+function CurrentScene() {
+  const { currentScene } = useSceneManager();
   const SceneComponent = sceneDefinitions[currentScene]?.component;
 
   if (!SceneComponent) {
     console.warn(`Scene "${currentScene}" not found, falling back to hub`);
-    return <SceneManager defaultScene="hub" />;
+    // You might want to render a default component here instead of null
+    return null;
   }
 
+  return <SceneComponent />;
+}
+
+export default function SceneManager() {
   return (
-    <SceneProvider
-      currentScene={currentScene}
-      setCurrentScene={setCurrentScene}
-    >
-      <SceneComponent />
+    <SceneProvider initialScene="melencoliaHub">
+      <CurrentScene />
     </SceneProvider>
   );
 }

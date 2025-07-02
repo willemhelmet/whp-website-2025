@@ -126,7 +126,6 @@ export default function MelencoliaHub() {
           key={`inner-${i}`}
           position={pos}
           targetScene={scenes[i].scene}
-          // targetScene={`SceneInner${i + 1}`}
           label={scenes[i].label}
         />
       ))}
@@ -136,7 +135,6 @@ export default function MelencoliaHub() {
           key={`outer-${i}`}
           position={pos}
           targetScene={scenes[i + 6].scene}
-          // targetScene={`SceneOuter${i + 1}`}
           label={scenes[i + 6].label}
         />
       ))}
