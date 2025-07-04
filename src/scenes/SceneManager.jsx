@@ -1,4 +1,5 @@
-import { SceneProvider, useSceneManager } from "../contexts/SceneContext.jsx";
+import { SceneProvider } from "../contexts/SceneContext.jsx";
+import { useSceneManager } from "../hooks/useScene.js";
 import { sceneDefinitions } from "../config/scenes";
 
 function CurrentScene() {

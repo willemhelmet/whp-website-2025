@@ -22,6 +22,11 @@ function MelencoliaScene8() {
         targetScene="melencoliaScene9"
         label="to 9"
       />
+      <Portal
+        position={[4, 0, 10.928]}
+        targetScene="melencoliaHub"
+        label="to hub"
+      />
       <Billboard position={[0, 2, 5]}>
         <group position={[0, 0, 0]}>
           <Root>

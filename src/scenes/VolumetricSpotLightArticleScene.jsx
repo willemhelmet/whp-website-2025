@@ -9,7 +9,9 @@ import {
 import { extend } from "@react-three/fiber";
 import * as THREE from "three";
 import { useMemo, useRef, useEffect } from "react";
-import { useControls } from "leva";
+// import { useControls } from "leva";
+// import { useScene } from "../hooks/useScene";
+import resolveLygia from "../utils/resolve-lygia";
 
 const SpotlightShader = shaderMaterial(
   {},
@@ -41,7 +43,7 @@ const SpotlightShader = shaderMaterial(
 
     gl_FragColor = vec4(, v_uv.y * 0.5);
   }
-  `),
+  `)
 );
 extend({ SpotlightShader });
 

@@ -2,7 +2,8 @@ import DefaultWorld from "../components/3d/DefaultWorld.jsx";
 import { useRef, useMemo } from "react";
 import { useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
-import { Text, shaderMaterial, useFBO } from "@react-three/drei";
+import { Text, shaderMaterial } from "@react-three/drei";
+import resolveLygia from "../utils/resolve-lygia.js";
 
 function ParticlesOnSphere() {
   return (
@@ -86,7 +87,7 @@ const DreiParticleShader = shaderMaterial(
     void main() {
       gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
     }
-    `),
+    `)
 );
 extend({ DreiParticleShader });
 
@@ -182,7 +183,7 @@ const SolarSystemShader = shaderMaterial(
 
       gl_FragColor = vec4(finalColor, strength);
     }
-    `),
+    `)
 );
 extend({ SolarSystemShader });
 

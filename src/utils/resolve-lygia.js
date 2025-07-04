@@ -6,7 +6,7 @@ function getFile(url) {
   else return "";
 }
 
-function resolveLygia(lines) {
+export default function resolveLygia(lines) {
   if (!Array.isArray(lines)) {
     lines = lines.split(/\r?\n/);
   }
@@ -26,10 +26,10 @@ function resolveLygia(lines) {
   return src;
 }
 
-async function resolveLygiaAsync(lines) {
+export async function resolveLygiaAsync(lines) {
   if (!Array.isArray(lines)) lines = lines.split(/\r?\n/);
 
-  let src = "";
+  //let src = "";
   const response = await Promise.all(
     lines.map(async (line, i) => {
       const line_trim = line.trim();
@@ -39,7 +39,7 @@ async function resolveLygiaAsync(lines) {
           "https://lygia.xyz" + include_url.replace(/\"|\;|\s/g, "");
         return fetch(include_url).then((res) => res.text());
       } else return line;
-    }),
+    })
   );
 
   return response.join("\n");

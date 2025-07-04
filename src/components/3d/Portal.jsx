@@ -1,10 +1,11 @@
 import { CuboidCollider } from "@react-three/rapier";
 import { extend } from "@react-three/fiber";
-import { useSceneManager } from "../../contexts/SceneContext.jsx";
+import { useSceneManager } from "../../hooks/useScene.js";
 import { Cylinder, Billboard, shaderMaterial } from "@react-three/drei";
 import { useRef } from "react";
 import { Container, Root, Text } from "@react-three/uikit";
 import PropTypes from "prop-types";
+import resolveLygia from "../../utils/resolve-lygia.js";
 
 const PortalShader = shaderMaterial(
   {
@@ -46,7 +47,7 @@ export default function Portal(props) {
       e.colliderObject.name == "character-capsule-collider" &&
       !isTeleporting
     ) {
-      console.log(`Portal entered! Switching to scene: ${targetScene}`);
+      // console.log(`Portal entered! Switching to scene: ${targetScene}`);
       if (targetScene) {
         teleportTo(targetScene);
       }
@@ -55,7 +56,7 @@ export default function Portal(props) {
 
   const onExit = (e) => {
     if (e.colliderObject.name == "character-capsule-collider") {
-      console.log("Player exited portal, re-enabling teleportation.");
+      // console.log("Player exited portal, re-enabling teleportation.");
       completeTeleport();
     }
   };
@@ -100,4 +101,3 @@ Portal.propTypes = {
   targetScene: PropTypes.string,
   label: PropTypes.string,
 };
-

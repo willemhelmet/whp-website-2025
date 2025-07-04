@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useState, useCallback } from "react";
+import PropTypes from "prop-types";
 
 const SceneContext = createContext();
 
@@ -29,14 +30,9 @@ export const SceneProvider = ({ children, initialScene }) => {
   );
 };
 
-export function useScene() {
-  const context = useContext(SceneContext);
-  if (!context) {
-    throw new Error("useScene must be used within a SceneProvider");
-  }
-  return context;
-}
+SceneProvider.propTypes = {
+  children: PropTypes.node,
+  initialScene: PropTypes.string,
+};
 
-export function useSceneManager() {
-  return useScene();
-}
+export default SceneContext;

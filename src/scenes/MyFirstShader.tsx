@@ -12,6 +12,7 @@ import {
 import { Abstract } from "lamina/vanilla";
 import * as THREE from "three";
 import { Ghostie } from "../components/3d/Ghostie.jsx";
+import resolveLygia from "../utils/resolve-lygia.js";
 
 const colorfulPlane = {
   vertexShader: `
@@ -95,7 +96,7 @@ const DreiShader = shaderMaterial(
     vec3 color = mix(color1, color2, vY);
     gl_FragColor = vec4(color, 1.0);
   }
-  `,
+  `
 );
 
 extend({ DreiShader });
@@ -133,7 +134,7 @@ const HelloLygiaShader = shaderMaterial(
       vec3 color = vec3(abs(vUv - 0.5) * 2.0 * (1.0 - distort), 1.0);
       gl_FragColor = vec4(color, 1.0);
     }
-  `),
+  `)
 );
 extend({ HelloLygiaShader });
 
@@ -149,7 +150,7 @@ const PointerShader = shaderMaterial(
       vec4 projectedPosition = projectionMatrix * viewPosition;
       gl_Position = projectedPosition;
     }
-    `,
+    `
   ),
   resolveLygia(
     `
@@ -159,8 +160,8 @@ const PointerShader = shaderMaterial(
       vec3 color = 1.0 - vec3(step(distance(vUv, u_cursorPos), 0.125));
       gl_FragColor = vec4(color, 1.0);
     }
-    `,
-  ),
+    `
+  )
 );
 extend({ PointerShader });
 
@@ -175,7 +176,7 @@ class MyFirstCustomLayer extends Abstract {
       v_uv = uv;
       return position;
     }
-    `,
+    `
   );
   // WHP: And see here that I am returning a vec4(), instead of calling gl_FragColor
   static fragmentShader = resolveLygia(
@@ -186,7 +187,7 @@ class MyFirstCustomLayer extends Abstract {
         vec3 color = vec3(v_uv.x, v_uv.y, 1.0);
         return vec4(color, 1.0);
       }
-    `,
+    `
   );
 
   constructor(props) {
@@ -207,7 +208,7 @@ export default function MyFirstShader() {
         value: 0.0,
       },
     }),
-    [],
+    []
   );
 
   const myFirstUniformMesh = useRef();
@@ -236,7 +237,7 @@ export default function MyFirstShader() {
         THREE.MathUtils.lerp(
           blobRef.current.material.uniforms.u_intensity.value,
           hoverRef.current ? 0.85 : 0.15,
-          0.02,
+          0.02
         );
     }
     if (pointerRef.current) {
