@@ -1,24 +1,24 @@
 import DefaultWorld from "../../components/3d/DefaultWorld";
 import { Container, Root, Text } from "@react-three/uikit";
 import Portal from "../../components/3d/Portal.jsx";
-import { Billboard } from "@react-three/drei";
+import { Billboard, Line } from "@react-three/drei";
 
 function MelencoliaScene11() {
   return (
     <>
       <DefaultWorld portal={false} />
       <Portal
-        position={[2, 0, 2]}
+        position={[-2, 0, 0.536]}
         targetScene="melencoliaScene5"
         label="to 5"
       />
       <Portal
-        position={[-2, 0, 2]}
+        position={[-8, 0, 4]}
         targetScene="melencoliaScene10"
         label="to 10"
       />
       <Portal
-        position={[0, 0, 2]}
+        position={[4, 0, -2.928]}
         targetScene="melencoliaScene12"
         label="to 12"
       />
@@ -27,6 +27,38 @@ function MelencoliaScene11() {
         targetScene="melencoliaHub"
         label="to hub"
       />
+
+      {/* Lines extending from the "to hub" portal to each other portal */}
+      <group>
+        {/* Green line to inner portal (scene 5) */}
+        <Line
+          points={[
+            [-4, 0, -2.928],
+            [-2, 0, 0.536],
+          ]}
+          lineWidth={5}
+          color="green"
+        />
+        {/* Yellow line to outer portal (scene 10) */}
+        <Line
+          points={[
+            [-4, 0, -2.928],
+            [-8, 0, 4],
+          ]}
+          lineWidth={5}
+          color="yellow"
+        />
+        {/* Yellow line to outer portal (scene 12) */}
+        <Line
+          points={[
+            [-4, 0, -2.928],
+            [4, 0, -2.928],
+          ]}
+          lineWidth={5}
+          color="yellow"
+        />
+      </group>
+
       <Billboard position={[0, 2, 5]}>
         <group position={[0, 0, 0]}>
           <Root>

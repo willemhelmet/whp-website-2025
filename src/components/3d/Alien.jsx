@@ -19,7 +19,7 @@ export default function Alien(props) {
 
   useEffect(() => {
     actions.ArmatureAction.play();
-  }, []);
+  }, [actions.ArmatureAction]);
 
   return (
     <group ref={group} {...props} dispose={null}>

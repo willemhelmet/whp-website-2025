@@ -1,24 +1,24 @@
 import DefaultWorld from "../../components/3d/DefaultWorld";
 import { Container, Root, Text } from "@react-three/uikit";
 import Portal from "../../components/3d/Portal.jsx";
-import { Billboard } from "@react-three/drei";
+import { Billboard, Line } from "@react-three/drei";
 
 function MelencoliaScene6() {
   return (
     <>
       <DefaultWorld portal={false} />
       <Portal
-        position={[2, 0, 2]}
+        position={[2, 0, 7.464]}
         targetScene="melencoliaScene2"
         label="to 2"
       />
       <Portal
-        position={[-2, 0, 2]}
+        position={[-4, 0, 4]}
         targetScene="melencoliaScene4"
         label="to 4"
       />
       <Portal
-        position={[0, 0, 2]}
+        position={[4, 0, -2.928]}
         targetScene="melencoliaScene12"
         label="to 12"
       />
@@ -27,6 +27,47 @@ function MelencoliaScene6() {
         targetScene="melencoliaHub"
         label="to hub"
       />
+
+      {/* Lines extending from the "to hub" portal to each other portal */}
+      <group>
+        {/* Blue line to inner portal (scene 2) */}
+        <Line
+          points={[
+            [2, 0, 0.536],
+            [2, 0, 7.464],
+          ]}
+          lineWidth={5}
+          color="blue"
+        />
+        {/* Blue line to inner portal (scene 4) */}
+        <Line
+          points={[
+            [2, 0, 0.536],
+            [-4, 0, 4],
+          ]}
+          lineWidth={5}
+          color="blue"
+        />
+        {/* Green line to outer portal (scene 12) */}
+        <Line
+          points={[
+            [2, 0, 0.536],
+            [4, 0, -2.928],
+          ]}
+          lineWidth={5}
+          color="green"
+        />
+        {/* Connect the two inner portals to each other */}
+        <Line
+          points={[
+            [2, 0, 7.464],
+            [-4, 0, 4],
+          ]}
+          lineWidth={5}
+          color="blue"
+        />
+      </group>
+
       <Billboard position={[0, 2, 5]}>
         <group position={[0, 0, 0]}>
           <Root>

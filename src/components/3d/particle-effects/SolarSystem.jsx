@@ -3,6 +3,7 @@ import { useFrame, extend } from "@react-three/fiber";
 import * as THREE from "three";
 import { shaderMaterial } from "@react-three/drei";
 import resolveLygia from "../../../utils/resolve-lygia.js";
+import PropTypes from "prop-types";
 
 const SolarSystemShader = shaderMaterial(
   { u_time: 0.0, u_radius: 1.0, u_particleSize: 0.05 },
@@ -51,7 +52,7 @@ const SolarSystemShader = shaderMaterial(
 
       gl_FragColor = vec4(finalColor, strength);
     }
-    `),
+    `)
 );
 extend({ SolarSystemShader });
 export default function SolarSystem({ count, radius, size }) {
@@ -102,3 +103,9 @@ export default function SolarSystem({ count, radius, size }) {
     </>
   );
 }
+
+SolarSystem.propTypes = {
+  count: PropTypes.number.isRequired,
+  radius: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired,
+};

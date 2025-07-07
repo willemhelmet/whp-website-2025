@@ -4,12 +4,11 @@ Command: npx gltfjsx@6.5.2 Apartment_Maquette.glb --transform
 Files: Apartment_Maquette.glb [12.2MB] > /Users/whp/Documents/HTML/WHP WEBSITE ROOT/ASSETS/Old Portfolio/Apartment_Maquette-transformed.glb [1.64MB] (87%)
 */
 
-import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function Apartment(props) {
   const { nodes, materials } = useGLTF(
-    "/models/Apartment_Maquette-transformed.glb",
+    "/models/Apartment_Maquette-transformed.glb"
   );
 
   return (
