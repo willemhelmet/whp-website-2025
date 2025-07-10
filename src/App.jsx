@@ -9,6 +9,7 @@ import XRButton from "./components/ui/XRButton";
 import Player from "./components/3d/player";
 import { Suspense } from "react";
 import Joystick from "./components/ui/Joystick.jsx";
+import { SocketManager } from "./components/utils/SocketManager.jsx";
 
 const store = createXRStore({
   hand: { teleportPointer: true },
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <Joystick />
+      <SocketManager />
       <PlayerProvider>
         <XRButton store={store} />
         <Stats />
