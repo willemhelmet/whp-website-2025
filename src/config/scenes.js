@@ -27,6 +27,7 @@ import MelencoliaScene9 from "../scenes/melencolia/melencolia-9";
 import MelencoliaScene10 from "../scenes/melencolia/melencolia-10";
 import MelencoliaScene11 from "../scenes/melencolia/melencolia-11";
 import MelencoliaScene12 from "../scenes/melencolia/melencolia-12";
+import SpookyFace from "../scenes/SpookyFace.jsx";
 
 // Centralized scene definitions with metadata
 export const sceneDefinitions = {
@@ -112,5 +113,9 @@ export const sceneDefinitions = {
   melencoliaScene12: {
     component: MelencoliaScene12,
     label: "melencolia scene 12",
+  },
+  spookyFace: {
+    component: SpookyFace,
+    label: "spookyFace",
   },
 };

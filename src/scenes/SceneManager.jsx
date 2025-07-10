@@ -17,7 +17,7 @@ function CurrentScene() {
 
 export default function SceneManager() {
   return (
-    <SceneProvider initialScene="melencoliaHub">
+    <SceneProvider initialScene="spookyFace">
       <CurrentScene />
     </SceneProvider>
   );
