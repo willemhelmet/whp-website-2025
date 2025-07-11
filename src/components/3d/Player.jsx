@@ -4,7 +4,7 @@ import { XROrigin, useXRControllerLocomotion, useXR } from "@react-three/xr";
 import { usePlayer } from "../../contexts/PlayerContext";
 import Ecctrl from "ecctrl";
 import { socket } from "../utils/SocketManager.jsx";
-import { Vector3, Quaternion } from "three";
+import { Vector3, Quaternion, Euler } from "three";
 //import { PointerLockControls } from "@react-three/drei";
 
 function Player() {
@@ -40,34 +40,42 @@ function Player() {
 
   const lastPosition = useRef(new Vector3());
   const lastQuaternion = useRef(new Quaternion());
+  const currentPosition = useRef(new Vector3());
+  const currentQuaternion = useRef(new Quaternion());
+  const euler = useRef(new Euler());
 
   useFrame(() => {
-    const currentPosition = new Vector3();
-    const currentQuaternion = new Quaternion();
-
-    if (isInXR) {
-      // AI: In XR, the camera's world position is what we need
-      camera.getWorldPosition(currentPosition);
-      camera.getWorldQuaternion(currentQuaternion);
-    } else {
-      // AI: In flatscreen, the Ecctrl component moves a parent object
-      // Assuming the camera is a good proxy for player's position
-      camera.getWorldPosition(currentPosition);
-      camera.getWorldQuaternion(currentQuaternion);
-    }
-
-    // AI: Send update only if position or rotation have changed significantly
     if (
-      currentPosition.distanceTo(lastPosition.current) > 0.1 ||
-      !currentQuaternion.equals(lastQuaternion.current)
+      currentPosition.current !== null &&
+      currentQuaternion.current !== null
     ) {
-      lastPosition.current.copy(currentPosition);
-      lastQuaternion.current.copy(currentQuaternion);
-      socket.emit(
-        "move",
-        currentPosition.toArray(),
-        currentQuaternion.toArray(),
-      );
+      if (isInXR) {
+        // AI: In XR, the camera's world position is what we need
+        camera.getWorldPosition(currentPosition.current);
+        camera.getWorldQuaternion(currentQuaternion.current);
+      } else {
+        // AI: In flatscreen, the Ecctrl component moves a parent object
+        // Assuming the camera is a good proxy for player's position
+        camera.getWorldPosition(currentPosition.current);
+        camera.getWorldQuaternion(currentQuaternion.current);
+      }
+
+      // AI: Send update only if position or rotation have changed significantly
+      if (
+        currentPosition.current.distanceTo(lastPosition.current) > 0.1 ||
+        !currentQuaternion.current.equals(lastQuaternion.current)
+      ) {
+        lastPosition.current.copy(currentPosition.current);
+        lastQuaternion.current.copy(currentQuaternion.current);
+        if (euler.current !== null) {
+          euler.current.setFromQuaternion(currentQuaternion.current);
+          socket.emit(
+            "move",
+            currentPosition.current.toArray(),
+            euler.current.toArray(),
+          );
+        }
+      }
     }
   });
 

@@ -12,7 +12,11 @@ export const OtherPlayers = () => {
           (player) =>
             // Ensure player data includes a position
             player.position && (
-              <OtherPlayer key={player.id} position={player.position} />
+              <OtherPlayer
+                key={player.id}
+                position={player.position}
+                rotation={player.rotation}
+              />
             ),
         )}
     </group>
