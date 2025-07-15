@@ -33,7 +33,7 @@ const PortalShader = shaderMaterial(
       vec3 color = vec3(0.2, 0.5, 0.8);
       gl_FragColor = vec4(color, alpha);
     }
-  `)
+  `),
 );
 extend({ PortalShader });
 
@@ -89,7 +89,7 @@ export default function Portal(props) {
       <CuboidCollider
         sensor
         position={[0, 1, 0]}
-        args={[0.5, 1, 0.5]}
+        args={[0.25, 1, 0.25]}
         onIntersectionEnter={onEnter}
         onIntersectionExit={onExit}
       />
