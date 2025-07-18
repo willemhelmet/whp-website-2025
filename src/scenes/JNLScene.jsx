@@ -10,34 +10,49 @@ import { text } from "../config/text.js";
 import TriangleMan from "../components/3d/TriangleMan.jsx";
 import Apartment from "../components/3d/Apartment_Maquette.jsx";
 import { RCLogo } from "../components/3d/RC_Logo.jsx";
-// import Lighting from "../components/3d/Lighting.jsx";
+import Portal from "../components/3d/Portal.jsx";
 
 export default function JNLScene() {
   return (
-    <group rotation={[0, Math.PI, 0]}>
-      <Float position={[-5.95, 2.48, -9]} rotation={[0, Math.PI, 0]}>
+    <group position={[2, 0, -1.5]} rotation={[0, Math.PI, 0]}>
+      <JNL />
+
+      <Float
+        position={[-5.95, 2.48, -9]}
+        rotation={[0, Math.PI, 0]}
+        scale={[0.75, 0.75, 0.75]}
+      >
         <RCLogo />
       </Float>
+
+      <Portal
+        position={[-5.95, 1.5, -9]}
+        targetScene={"melencoliaHub"}
+        color={"#00ff00"}
+      />
+
       {/* <Lighting /> */}
       <ambientLight />
       <directionalLight castShadow position={[10, 10, 10]} />
+
       <Alien
         position={[-0.84, -0.354, -2.85]}
         rotation={[0, -1.965, 0]}
         scale={[0.08, 0.08, 0.08]}
       />
+
       <Apartment
         position={[-5, 1.98, -9.75]}
         rotation={[0, Math.PI * 1.5, 0]}
         scale={[0.3, 0.3, 0.3]}
       />
+
       <Poster
         position={[-3, 2.5, -12.05]}
         rotation={[0, 0, 0]}
         title={text[9].title}
         body={text[9].body}
       />
-      <JNL />
       <TriangleMan
         position={[6.26, -0.7, -0.39]}
         scale={0.7}

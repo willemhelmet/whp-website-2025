@@ -6,10 +6,11 @@ import { useRef } from "react";
 import { Container, Root, Text } from "@react-three/uikit";
 import PropTypes from "prop-types";
 import resolveLygia from "../../utils/resolve-lygia.js";
+import * as THREE from "three";
 
 const PortalShader = shaderMaterial(
   {
-    /*u_time: 0*/
+    u_color: new THREE.Color(0x3380cc),
   },
   resolveLygia(`
     varying vec2 v_uv;
@@ -23,14 +24,14 @@ const PortalShader = shaderMaterial(
   `),
   resolveLygia(`
     #include "lygia/animation/easing.glsl"
-    //uniform float u_time;
+    uniform vec3 u_color;
     varying vec2 v_uv;
     void main() {
       float alpha = 1.0 - exponentialOut(v_uv.y);
       alpha += exponentialIn(v_uv.y - 0.15);
       alpha *= 0.5;
       alpha = clamp(alpha, 0.0, 1.0);
-      vec3 color = vec3(0.2, 0.5, 0.8);
+      vec3 color = u_color;
       gl_FragColor = vec4(color, alpha);
     }
   `),
@@ -38,7 +39,7 @@ const PortalShader = shaderMaterial(
 extend({ PortalShader });
 
 export default function Portal(props) {
-  const { targetScene, label, ...rest } = props;
+  const { color, targetScene, label, ...rest } = props;
   const { isTeleporting, teleportTo, completeTeleport } = useSceneManager();
   const portalRef = useRef();
 
@@ -76,15 +77,19 @@ export default function Portal(props) {
       )}
       {/* bottom */}
       <Cylinder position={[0, 0.025, 0]} args={[0.5, 0.5, 0.1]}>
-        <meshBasicMaterial color="#3380CC" />
+        <meshBasicMaterial color={color ? color : "#3380CC"} />
       </Cylinder>
       {/* middle */}
       <Cylinder ref={portalRef} position={[0, 1, 0]} args={[0.5, 0.5, 1.8]}>
-        <portalShader transparent depthWrite={false} />
+        <portalShader
+          transparent
+          depthWrite={false}
+          u_color={new THREE.Color(color ? color : "#3380CC")}
+        />
       </Cylinder>
       {/* top */}
       <Cylinder position={[0, 1.975, 0]} args={[0.5, 0.5, 0.1]}>
-        <meshBasicMaterial color="#3380CC" />
+        <meshBasicMaterial color={color ? color : "#3380CC"} />
       </Cylinder>
       <CuboidCollider
         sensor
@@ -100,4 +105,5 @@ export default function Portal(props) {
 Portal.propTypes = {
   targetScene: PropTypes.string,
   label: PropTypes.string,
+  color: PropTypes.string,
 };
