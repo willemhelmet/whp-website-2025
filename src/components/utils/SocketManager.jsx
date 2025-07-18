@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { io } from "socket.io-client";
 import { atom, useAtom } from "jotai";
 
-export const socket = io("http://localhost:3001");
+export const socket = io("https://whpmultiplayer.rcdis.co");
 export const playersAtom = atom([]);
 
 export const SocketManager = () => {
