@@ -9,9 +9,7 @@ import { Fresnel, Depth, Color, LayerMaterial } from "lamina";
 import * as THREE from "three";
 
 export function Ghostie(props) {
-  const { nodes, materials } = useGLTF(
-    "/public/models/ghostie-transformed.glb",
-  );
+  const { nodes, materials } = useGLTF("/models/ghostie-transformed.glb");
   return (
     <group {...props} dispose={null} scale={10}>
       <mesh geometry={nodes.Ghostie_Eyes_01.geometry}>

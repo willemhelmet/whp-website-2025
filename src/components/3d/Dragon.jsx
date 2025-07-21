@@ -7,7 +7,7 @@ Files: /Users/whp/Downloads/dragon.gltf [617.32KB] > /Users/whp/Documents/HTML/W
 import { useGLTF } from "@react-three/drei";
 
 export default function Dragon(props) {
-  const { nodes, materials } = useGLTF("/public/models/dragon-transformed.glb");
+  const { nodes, materials } = useGLTF("/models/dragon-transformed.glb");
   return (
     <group {...props} dispose={null}>
       <mesh

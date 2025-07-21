@@ -1,4 +1,4 @@
-import { CuboidCollider } from "@react-three/rapier";
+import { CuboidCollider, CapsuleCollider } from "@react-three/rapier";
 import { extend } from "@react-three/fiber";
 import { useSceneManager } from "../../hooks/useScene.js";
 import { Cylinder, Billboard, shaderMaterial } from "@react-three/drei";
@@ -91,10 +91,10 @@ export default function Portal(props) {
       <Cylinder position={[0, 1.975, 0]} args={[0.5, 0.5, 0.1]}>
         <meshBasicMaterial color={color ? color : "#3380CC"} />
       </Cylinder>
-      <CuboidCollider
+      <CapsuleCollider
         sensor
         position={[0, 1, 0]}
-        args={[0.25, 1, 0.25]}
+        args={[0.5, 0.5]}
         onIntersectionEnter={onEnter}
         onIntersectionExit={onExit}
       />

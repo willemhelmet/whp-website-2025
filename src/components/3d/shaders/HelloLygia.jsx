@@ -1,8 +1,8 @@
-import { shaderMaterial, Text } from "@react-three/drei";
+import { shaderMaterial } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
-import resolveLygia from "../utils/resolve-lygia.js";
+import resolveLygia from "../../../utils/resolve-lygia.js";
 
 const HelloLygiaShader = shaderMaterial(
   {
@@ -59,9 +59,6 @@ export function HelloLygia(props) {
 
   return (
     <group {...props}>
-      <Text position={[0, 2.5, 1]} fontSize={0.25}>
-        Blob With Hover
-      </Text>
       <mesh
         position={[0, 2, 0]}
         rotation={[0, Math.PI * 0.25, 0]}

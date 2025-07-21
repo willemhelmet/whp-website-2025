@@ -1,12 +1,12 @@
 import DefaultWorld from "../components/3d/DefaultWorld.jsx";
-import { ColorfulPlane } from "../shaders/ColorfulPlane.jsx";
-import { MyFirstUniforms } from "../shaders/MyFirstUniforms.jsx";
-import { DreiShaderComponent } from "../shaders/DreiShaderComponent.jsx";
-import { HelloLygia } from "../shaders/HelloLygia.jsx";
-import { PointerShaderComponent } from "../shaders/PointerShaderComponent.jsx";
-import { LaminaCustomLayer } from "../shaders/LaminaCustomLayer.jsx";
-import { LaminaExample } from "../shaders/LaminaExample.jsx";
-import { GhostieScene } from "../shaders/GhostieScene.jsx";
+import { ColorfulPlane } from "../components/3d/shaders/ColorfulPlane.jsx";
+import { MyFirstUniforms } from "../components/3d/shaders/MyFirstUniforms.jsx";
+import { DreiShaderComponent } from "../components/3d/shaders/DreiShaderComponent.jsx";
+import { HelloLygia } from "../components/3d/shaders/HelloLygia.jsx";
+import { PointerShaderComponent } from "../components/3d/shaders/PointerShaderComponent.jsx";
+import { LaminaCustomLayer } from "../components/3d/shaders/LaminaCustomLayer.jsx";
+import { LaminaExample } from "../components/3d/shaders/LaminaExample.jsx";
+import { GhostieScene } from "../components/3d/shaders/GhostieScene.jsx";
 
 export default function MyFirstShader() {
   return (

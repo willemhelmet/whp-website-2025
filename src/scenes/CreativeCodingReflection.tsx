@@ -1,51 +1,17 @@
 import SolarSystem from "../components/3d/particle-effects/SolarSystem.jsx";
 import { useRef } from "react";
 import {
-  useGLTF,
   Environment,
   MeshReflectorMaterial,
   Sky,
   Stars,
-  Sparkles,
 } from "@react-three/drei";
 import { CuboidCollider } from "@react-three/rapier";
 import { MathUtils, Color } from "three";
 import { LayerMaterial, Gradient } from "lamina";
 import { useFrame } from "@react-three/fiber";
 import Portal from "../components/3d/Portal.jsx";
-
-function Orb({ position, radius }) {
-  return (
-    <>
-      <mesh position={position}>
-        <sphereGeometry args={[radius, 32, 32]} />
-        <meshStandardMaterial color="white" />
-      </mesh>
-    </>
-  );
-}
-
-function Orbs({ position, radius }) {
-  const orbsRef = useRef();
-  const array = Array.from({ length: 50 }, (_, i) => i);
-  useFrame((state, delta) => {
-    if (orbsRef.current) {
-      orbsRef.current.rotation.y += delta * 0.1;
-    }
-  }, []);
-  return (
-    <>
-      <group position={position} ref={orbsRef}>
-        {array.map((index) => {
-          const angle = (index / array.length) * Math.PI * 2;
-          const x = Math.cos(angle) * radius;
-          const z = Math.sin(angle) * radius;
-          return <Orb key={index} position={[x, 0, z]} radius={0.0125} />;
-        })}
-      </group>
-    </>
-  );
-}
+import Sculpture from "../components/3d/Sculpture.jsx";
 
 function Mountain({ position }) {
   return (
@@ -106,32 +72,17 @@ function Mountains() {
 }
 
 export default function CreativeCodingReflection(props) {
-  const { nodes, materials } = useGLTF(
-    "public/models/the_thinker_by_auguste_rodin-transformed.glb",
-  );
   return (
     <>
       <directionalLight position={[10, 10, 0]} intensity={10} color="purple" />
       <ambientLight intensity={0.5} color="orange" />
       <pointLight position={[0.5, 2, 1]} intensity={10} color="red" />
       <Environment preset="city"></Environment>
-      <group position={[0, 0, 2]} rotation={[0, (-0.75 * Math.PI) / 2, 0]}>
-        {/* <Sparkles position={[-0.55, 1.65, 0.0]} scale={0.25} /> */}
-        <Sparkles
-          position={[
-            -0.6700000000000002, 1.7200000000000002, 0.46000000000000013,
-          ]}
-          scale={0.25}
-        />
-        <mesh
-          geometry={nodes.Object_2.geometry}
-          position={[0.007, 0.001, 0.005]}
-          rotation={[-1.576, -0.008, 0]}
-        >
-          <meshStandardMaterial color="white" />
-        </mesh>
-      </group>
-      <Orbs position={[-0.65, 1.75, 1.48]} radius={0.3} />
+      <Sculpture
+        position={[0, 0, 2]}
+        rotation={[0, (-0.75 * Math.PI) / 2, 0]}
+      />
+
       <SolarSystem />
       <group>
         <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>

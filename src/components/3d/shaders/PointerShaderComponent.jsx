@@ -2,7 +2,7 @@ import { shaderMaterial, Plane, Text } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
-import resolveLygia from "../utils/resolve-lygia.js";
+import resolveLygia from "../../../utils/resolve-lygia.js";
 
 const PointerShader = shaderMaterial(
   { u_cursorPos: new THREE.Vector2(0.5, 0.5) },

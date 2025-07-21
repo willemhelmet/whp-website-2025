@@ -30,7 +30,7 @@ function App() {
       <SocketManager />
       <PlayerProvider>
         <XRButton store={store} />
-        <Stats />
+        {/* <Stats /> */}
         <Canvas
           shadows
           className="webgl"

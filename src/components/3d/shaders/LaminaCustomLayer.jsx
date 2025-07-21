@@ -2,7 +2,7 @@ import { Plane, Text } from "@react-three/drei";
 import { extend } from "@react-three/fiber";
 import { LayerMaterial, Depth } from "lamina";
 import { Abstract } from "lamina/vanilla";
-import resolveLygia from "../utils/resolve-lygia.js";
+import resolveLygia from "../../../utils/resolve-lygia.js";
 
 class MyFirstCustomLayer extends Abstract {
   static vertexShader = resolveLygia(

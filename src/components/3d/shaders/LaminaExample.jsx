@@ -1,4 +1,3 @@
-import { Text } from "@react-three/drei";
 import { LayerMaterial, Depth, Fresnel, Color } from "lamina";
 import { useGSAP } from "@gsap/react";
 import { useFrame } from "@react-three/fiber";
@@ -32,9 +31,6 @@ export function LaminaExample(props) {
 
   return (
     <group {...props}>
-      <Text position={[0, 3.25, 0]} fontSize={0.25}>
-        Lamina Example
-      </Text>
       <mesh
         ref={meshRef}
         position={[0, 1.8, 0]}

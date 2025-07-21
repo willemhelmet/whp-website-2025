@@ -1,4 +1,4 @@
-import { Sky, Sparkles, Stars, Float } from "@react-three/drei";
+import { Sky, Stars, Float } from "@react-three/drei";
 
 import Alien from "../components/3d/Alien.jsx";
 import AndyAward from "../components/3d/AndyAward.jsx";
@@ -10,12 +10,23 @@ import { text } from "../config/text.js";
 import TriangleMan from "../components/3d/TriangleMan.jsx";
 import Apartment from "../components/3d/Apartment_Maquette.jsx";
 import { RCLogo } from "../components/3d/RC_Logo.jsx";
+import Plinth from "../components/3d/Plinth.jsx";
+import { LaminaExample } from "../components/3d/shaders/LaminaExample.jsx";
+import { HelloLygia } from "../components/3d/shaders/HelloLygia.jsx";
+import AlienBaby from "../components/3d/Alien-baby.jsx";
+import SolarSystem from "../components/3d/particle-effects/SolarSystem.jsx";
+import Sculpture from "../components/3d/Sculpture.jsx";
+import { useControls } from "leva";
 
 export default function JNLScene() {
+  const { pos } = useControls({
+    pos: [-2.006, 1.37, -8.124],
+  });
   return (
     <group position={[2, 0, -1.5]} rotation={[0, Math.PI, 0]}>
       <JNL />
 
+      {/* RC Logo */}
       <Float
         position={[-5.95, 2.48, -9]}
         rotation={[0, Math.PI, 0]}
@@ -24,6 +35,22 @@ export default function JNLScene() {
         <RCLogo />
       </Float>
 
+      <Plinth position={[1.141, 1.37, -12.8]} />
+      <LaminaExample position={[1.141, 2, -12.8]} scale={[0.25, 0.25, 0.25]} />
+
+      <Plinth position={[2.97, 1.37, -12.8]} />
+      <HelloLygia position={[2.97, 2, -12.8]} scale={[0.25, 0.25, 0.25]} />
+
+      <AlienBaby
+        position={[-4.577, 2.645, -10.047]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        scale={[20, 20, 20]}
+      />
+
+      <Sculpture
+        position={[-0.75, 1.37, -12.808699999999998]}
+        rotation={[0, Math.PI * 0.5, 0]}
+      />
       {/* <Portal */}
       {/*   position={[-5.95, 1.5, -9]} */}
       {/*   targetScene={"recurseCenterPlayground"} */}
