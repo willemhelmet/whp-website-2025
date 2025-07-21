@@ -53,9 +53,7 @@ export function RCLogo(props) {
     }
   }, [isClicked]);
 
-  const { nodes, materials } = useGLTF(
-    "/public/models/RC_Logo-transformed.glb"
-  );
+  const { nodes, materials } = useGLTF("/models/RC_Logo-transformed.glb");
 
   return (
     <group {...props} scale={[0.25, 0.25, 0.25]} ref={ref}>

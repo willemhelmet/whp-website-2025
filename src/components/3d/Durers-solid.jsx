@@ -6,7 +6,7 @@ Files: /Users/whp/Documents/HTML/WHP_WEBSITE_2025_ROOT/ASSETS/durers-solid/durer
 import { useGLTF } from "@react-three/drei";
 
 export default function DurersSolid(props) {
-  const { nodes } = useGLTF("/public/models/durers-solid-transformed.glb");
+  const { nodes } = useGLTF("/models/durers-solid-transformed.glb");
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Duerers_Solid.geometry}>
@@ -16,4 +16,4 @@ export default function DurersSolid(props) {
   );
 }
 
-useGLTF.preload("/durers-solid-transformed.glb");
+useGLTF.preload("/models/durers-solid-transformed.glb");

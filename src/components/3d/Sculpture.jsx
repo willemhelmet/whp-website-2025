@@ -48,7 +48,7 @@ function Orbs({ position, radius }) {
 
 export default function Sculpture(props) {
   const { nodes } = useGLTF(
-    "public/models/the_thinker_by_auguste_rodin-transformed.glb",
+    "/models/the_thinker_by_auguste_rodin-transformed.glb",
   );
 
   return (

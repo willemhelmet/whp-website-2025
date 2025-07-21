@@ -6,7 +6,7 @@ Files: tree.glb [5.37MB] > /Users/whp/Desktop/tree-transformed.glb [781.38KB] (8
 import { useGLTF } from "@react-three/drei";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/public/models/tree-transformed.glb");
+  const { nodes, materials } = useGLTF("/models/tree-transformed.glb");
   return (
     <group {...props} dispose={null}>
       <points rotation={[Math.PI, -1.181, Math.PI]}>
@@ -38,4 +38,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/tree-transformed.glb");
+useGLTF.preload("/models/tree-transformed.glb");

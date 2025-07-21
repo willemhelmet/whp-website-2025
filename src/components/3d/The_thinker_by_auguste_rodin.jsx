@@ -11,7 +11,7 @@ import { useGLTF } from "@react-three/drei";
 
 export function TheThinker(props) {
   const { nodes, materials } = useGLTF(
-    "public/models/the_thinker_by_auguste_rodin-transformed.glb",
+    "/models/the_thinker_by_auguste_rodin-transformed.glb",
   );
   return (
     <group {...props} dispose={null}>
@@ -25,4 +25,4 @@ export function TheThinker(props) {
   );
 }
 
-useGLTF.preload("/the_thinker_by_auguste_rodin-transformed.glb");
+useGLTF.preload("/models/the_thinker_by_auguste_rodin-transformed.glb");
