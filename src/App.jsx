@@ -1,12 +1,12 @@
 import { Canvas } from "@react-three/fiber";
-import { Loader, Stats, KeyboardControls } from "@react-three/drei";
+import { Loader, KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { XR, createXRStore } from "@react-three/xr";
 import { PlayerProvider } from "./contexts/PlayerContext";
 
 import SceneManager from "./scenes/SceneManager";
 import XRButton from "./components/ui/XRButton";
-import Player from "./components/3d/player";
+import Player from "./components/3d/Player";
 import { Suspense } from "react";
 import Joystick from "./components/ui/Joystick.jsx";
 import { SocketManager } from "./components/utils/SocketManager.jsx";
