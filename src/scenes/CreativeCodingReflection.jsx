@@ -1,5 +1,4 @@
 import SolarSystem from "../components/3d/particle-effects/SolarSystem.jsx";
-import { useRef } from "react";
 import {
   Environment,
   MeshReflectorMaterial,
@@ -7,9 +6,8 @@ import {
   Stars,
 } from "@react-three/drei";
 import { CuboidCollider } from "@react-three/rapier";
-import { MathUtils, Color } from "three";
+import { MathUtils, Color, Vector3 } from "three";
 import { LayerMaterial, Gradient } from "lamina";
-import { useFrame } from "@react-three/fiber";
 import Portal from "../components/3d/Portal.jsx";
 import Sculpture from "../components/3d/Sculpture.jsx";
 
@@ -96,6 +94,7 @@ export default function CreativeCodingReflection(props) {
             depthScale={2}
             minDepthThreshold={0.9}
             maxDepthThreshold={1}
+            mirror={0}
           />
         </mesh>
         <CuboidCollider position={[0, -0.5, 0]} args={[50, 0.5, 50]} />
@@ -106,7 +105,7 @@ export default function CreativeCodingReflection(props) {
         rayleigh={0}
         mieCoefficient={0.005}
         mieDirectionalG={0.35}
-        elevation={0.0}
+        sunPosition={new Vector3(0, 0, 0)}
         azimuth={180.0}
         exposure={0.16}
       />
