@@ -11,7 +11,7 @@ import {
   Torus,
   Sky,
 } from "@react-three/drei";
-import Player from "../components/3d/player";
+import Player from "../components/3d/Player";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

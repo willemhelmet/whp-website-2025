@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Vector3 } from "three";
 import { TeleportTarget, useXRInputSourceState } from "@react-three/xr";
 import { Grid, Environment, Text, Sky, Plane } from "@react-three/drei";
-import Player from "../components/3d/player";
+import Player from "../components/3d/Player";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
 import { useFrame } from "@react-three/fiber";
 import DefaultWorld from "../components/3d/DefaultWorld.jsx";

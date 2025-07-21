@@ -1,6 +1,6 @@
 import { Grid, Box, Sphere, Plane, Sky, Environment } from "@react-three/drei";
 import OrbitControlsWrapper from "../components/utils/OrbitControlsWrapper";
-import Player from "../components/3d/player";
+import Player from "../components/3d/Player";
 import DefaultWorld from "../components/3d/DefaultWorld.jsx";
 
 function HelloReactThreeFiber() {
