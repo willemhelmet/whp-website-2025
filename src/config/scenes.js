@@ -28,6 +28,7 @@ import MelencoliaScene10 from "../scenes/melencolia/melencolia-10";
 import MelencoliaScene11 from "../scenes/melencolia/melencolia-11";
 import MelencoliaScene12 from "../scenes/melencolia/melencolia-12";
 import SpookyFace from "../scenes/SpookyFace.jsx";
+import RecurseCenterPlayground from "../scenes/RecurseCenterPlayground.jsx";
 
 // Centralized scene definitions with metadata
 export const sceneDefinitions = {
@@ -117,5 +118,9 @@ export const sceneDefinitions = {
   spookyFace: {
     component: SpookyFace,
     label: "spookyFace",
+  },
+  recurseCenterPlayground: {
+    component: RecurseCenterPlayground,
+    label: "rc playground",
   },
 };

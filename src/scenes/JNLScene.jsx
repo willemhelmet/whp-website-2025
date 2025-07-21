@@ -1,4 +1,4 @@
-import { Sky, Stars, Float } from "@react-three/drei";
+import { Sky, Sparkles, Stars, Float } from "@react-three/drei";
 
 import Alien from "../components/3d/Alien.jsx";
 import AndyAward from "../components/3d/AndyAward.jsx";
@@ -10,7 +10,6 @@ import { text } from "../config/text.js";
 import TriangleMan from "../components/3d/TriangleMan.jsx";
 import Apartment from "../components/3d/Apartment_Maquette.jsx";
 import { RCLogo } from "../components/3d/RC_Logo.jsx";
-import Portal from "../components/3d/Portal.jsx";
 
 export default function JNLScene() {
   return (
@@ -25,11 +24,11 @@ export default function JNLScene() {
         <RCLogo />
       </Float>
 
-      <Portal
-        position={[-5.95, 1.5, -9]}
-        targetScene={"melencoliaHub"}
-        color={"#00ff00"}
-      />
+      {/* <Portal */}
+      {/*   position={[-5.95, 1.5, -9]} */}
+      {/*   targetScene={"recurseCenterPlayground"} */}
+      {/*   color={"#00ff00"} */}
+      {/* /> */}
 
       {/* <Lighting /> */}
       <ambientLight />

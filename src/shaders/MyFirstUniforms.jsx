@@ -1,0 +1,68 @@
+import { Plane, Text } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useMemo, useRef } from "react";
+
+const myFirstUniformsShader = {
+  vertexShader: `
+  uniform float u_time;
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    modelPosition.y += sin(modelPosition.x * 6.0 + u_time * 2.0) * 0.25;
+    // modelPosition.y += sin(modelPosition.z * 6.0 + u_time * 2.0) * 0.1;
+    vec4 viewPosition = viewMatrix * modelPosition;
+    vec4 projectedPosition = projectionMatrix * viewPosition;
+    gl_Position = projectedPosition;
+  }
+  `,
+  fragmentShader: `
+    varying vec2 vUv;
+    vec3 colorA = vec3(0.912,0.191,0.652);
+    vec3 colorB = vec3(1.000,0.777,0.052);
+    void main() {
+      vec3 color = mix(colorA, colorB, vUv.x);
+      gl_FragColor = vec4(color, 1.0);
+    }
+  `,
+};
+
+export function MyFirstUniforms(props) {
+  const myFirstUniforms = useMemo(
+    () => ({
+      u_time: {
+        value: 0.0,
+      },
+    }),
+    [],
+  );
+
+  const myFirstUniformMesh = useRef();
+
+  useFrame((state) => {
+    const { clock } = state;
+    if (myFirstUniformMesh.current) {
+      myFirstUniformMesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
+    }
+  });
+
+  return (
+    <group {...props}>
+      <Text position={[0, 2.5, -1]} fontSize={0.25}>
+        Uniforms!
+      </Text>
+      <Plane
+        position={[0, 2, 0]}
+        rotation={[-Math.PI * 0.5, 0, 0]}
+        args={[3, 3, 32, 32]}
+        ref={myFirstUniformMesh}
+      >
+        <shaderMaterial
+          vertexShader={myFirstUniformsShader.vertexShader}
+          fragmentShader={myFirstUniformsShader.fragmentShader}
+          uniforms={myFirstUniforms}
+        />
+      </Plane>
+    </group>
+  );
+}

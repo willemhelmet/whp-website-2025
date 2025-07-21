@@ -30,7 +30,7 @@ function CurrentScene() {
 
 export default function SceneManager() {
   return (
-    <SceneProvider initialScene="jnl">
+    <SceneProvider initialScene="firstShader">
       <CurrentScene />
     </SceneProvider>
   );

@@ -18,4 +18,4 @@ export default function Dragon(props) {
   );
 }
 
-useGLTF.preload("/public/models/dragon-transformed.glb");
+useGLTF.preload("/models/dragon-transformed.glb");
