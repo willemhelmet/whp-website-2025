@@ -16,12 +16,8 @@ import { HelloLygia } from "../components/3d/shaders/HelloLygia.jsx";
 import AlienBaby from "../components/3d/Alien-baby.jsx";
 import SolarSystem from "../components/3d/particle-effects/SolarSystem.jsx";
 import Sculpture from "../components/3d/Sculpture.jsx";
-import { useControls } from "leva";
 
 export default function JNLScene() {
-  const { pos } = useControls({
-    pos: [-2.006, 1.37, -8.124],
-  });
   return (
     <group position={[2, 0, -1.5]} rotation={[0, Math.PI, 0]}>
       <JNL />
