@@ -14,7 +14,7 @@ import Plinth from "../components/3d/Plinth.jsx";
 import { LaminaExample } from "../components/3d/shaders/LaminaExample.jsx";
 import { HelloLygia } from "../components/3d/shaders/HelloLygia.jsx";
 import AlienBaby from "../components/3d/Alien-baby.jsx";
-import SolarSystem from "../components/3d/particle-effects/SolarSystem.jsx";
+// import SolarSystem from "../components/3d/particle-effects/SolarSystem.jsx";
 import Sculpture from "../components/3d/Sculpture.jsx";
 
 export default function JNLScene() {
